@@ -14,3 +14,15 @@ self.addEventListener('install', (event) => {
             })
     )
 });
+
+// Listen for requests
+self.addEventListener('fetch', (event) => {
+    event.respondWith(
+        caches.match(event.request)
+            .then(() => {
+                return fetch(event.request)
+                    // If there is no data, then it is offline
+                    .catch(() => caches.match('offline.html'));
+            })
+    )
+});
