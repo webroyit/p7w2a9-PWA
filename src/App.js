@@ -17,8 +17,9 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="container">
       <input
+        className="searchBar"
         type="text"
         placeholder="Search..."
         value={query}
@@ -26,7 +27,7 @@ function App() {
         onKeyPress={search} />
       
       {weather.main && (
-        <div>
+        <div className="cityCard">
           <h2>
             <span>{weather.name}</span>
             <sup>{weather.sys.country}</sup>
